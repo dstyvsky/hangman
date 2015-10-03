@@ -1,21 +1,23 @@
 --- !ruby/object:Game
 hidden_word:
-- r
+- i
+- n
+- t
 - e
-- p
-- u
-- l
-- s
+- r
+- w
+- o
+- v
 - e
 guessing_status:
 - _
 - _
 - _
+- e
 - _
 - _
-- s
 - _
-attempts: 3
-incorrect_guess:
-- a
-- f
+- _
+- e
+attempts: 1
+incorrect_guess: []

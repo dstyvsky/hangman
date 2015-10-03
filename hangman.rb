@@ -39,6 +39,9 @@ end
 initial_selection = 0
 while(initial_selection != "3")
 	system('clear')
+	puts "HANGMAN: THE GAME"
+	puts
+	puts
 	puts "Please enter the number of the selection you would like to make:"
 	puts "1. Start a new game"
 	puts "2. Load your previous game"
