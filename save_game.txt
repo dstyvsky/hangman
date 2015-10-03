@@ -1,0 +1,21 @@
+--- !ruby/object:Game
+hidden_word:
+- r
+- e
+- p
+- u
+- l
+- s
+- e
+guessing_status:
+- _
+- _
+- _
+- _
+- _
+- s
+- _
+attempts: 3
+incorrect_guess:
+- a
+- f

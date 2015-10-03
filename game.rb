@@ -8,6 +8,8 @@ class Game
 			@hidden_word = read_line_number(filename, random_line).split('')
 		end
 		start_guessing_status
+		@attempts = 1
+		@incorrect_guess = []
 	end
 
 	def read_line_number(filename, number)
@@ -17,28 +19,24 @@ class Game
 	end
 
 	def show
-		puts @hidden_word.join('')
+		@hidden_word.join('')
 	end
 
-	def guess
-		puts @guessing_status.join(' ')
-		puts
-		puts "Enter the number \"1\" to save"
-		print "Or guess a letter: "
-		guess = gets.chomp
-
-		if guess == 1
-			File.open('save_game.txt', 'w') {|f| f.write(YAML.dump(first))}
-			
-		end
-
+	def guess(guess)
+		found_it = false
 		@hidden_word.each_with_index do |letter, index|
 			if guess.upcase == letter.upcase
 				@guessing_status[index] = "#{letter}"
+				found_it = true
 			end
+		end
+		if found_it == false
+			@incorrect_guess << guess
+			@attempts += 1
 		end
 		$game_on = false if @hidden_word == @guessing_status
 		system('clear')
+		puts "Game Status: #{@guessing_status.join(' ')}  Incorrect guesses: #{@incorrect_guess.join(' ')}"
 	end
 
 	def start_guessing_status
@@ -48,5 +46,17 @@ class Game
 		end
 		starting_line = @guessing_status.join(' ')
 	end
-		
+
+	def saves_attempts(attempts)
+		@attempts = attempts
+	end
+
+	def check_attempts
+		@attempts
+	end
+
+	def show_guessing_status
+		puts "Game Status: #{@guessing_status.join(' ')}  Incorrect guesses: #{@incorrect_guess.join(' ')}"
+	end
+
 end
